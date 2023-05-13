@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:myguideproject/scanning/result_screen.dart';
+import 'package:scanly/qr_generator/scanly_qr_generator.dart';
+import 'package:scanly/qr_generator/scanly_qr_scanner.dart';
 
 const bgColor = Color(0xfffafafa);
 class QrCodeScreen extends StatefulWidget {
@@ -62,22 +64,20 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                 )),
             Expanded(
                 flex:4 ,
+              // child: ScanlyQRScanner(
+              //   onScanData: (data){
+              //
+              //
+              //   },
+              //
+              // ),
               child: MobileScanner(
                 onDetect: (Capture ){
-                  if(!isScanCompleted){
-                   String  code =Barcode(rawValue: '') as String;
-                   isScanCompleted = true;
-                   Navigator.push(context, MaterialPageRoute(builder:(context)=>ResultScreen(
-                     closeScreen: closeScreen,
-                     code: code ,
-                   )
-                   )
-                   );
 
-                  }
                 },
               ),
                 ),
+
             Container(
               decoration: BoxDecoration(
                 color: HexColor('063455'),
